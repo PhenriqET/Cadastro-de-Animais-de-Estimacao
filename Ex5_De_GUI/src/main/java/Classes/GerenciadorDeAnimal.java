@@ -7,17 +7,17 @@ public class GerenciadorDeAnimal {
     
     //Metodos
 
-    public GerenciadorDeAnimal(List<Animal> listaAnimais) {
-        this.listaAnimais = listaAnimais;
+    public GerenciadorDeAnimal() {
+        this.listaAnimais = new ArrayList<>();
     }
     
     public void addAnimal(Animal animal){
         listaAnimais.add(animal);
     }
     
-    public boolean removeAnimal(String nome){
+    public boolean removeAnimal(String cod){
         for(Animal a : listaAnimais){
-            if(a.getNome().equalsIgnoreCase(nome)){
+            if(a.getCod().equalsIgnoreCase(cod)){
                 listaAnimais.remove(a);
                 System.out.println("Animal removido da lista!");
                 return true;
@@ -27,9 +27,9 @@ public class GerenciadorDeAnimal {
         return false;
     }
     
-    public Animal buscarAnimal(Animal animal){
+    public Animal buscarAnimal(String cod){
         for(Animal a : listaAnimais){
-            if(a.getNome().equals(animal)){
+            if(a.getCod().equals(cod)){
                 System.out.println("Animal econtrado!");
                 return a;
             }
@@ -38,16 +38,24 @@ public class GerenciadorDeAnimal {
         return null;
     }
     
-    public void printAnimais(){
-        String write;
-        int i = 0;
+    public void atualizaAnimal(String codAntigo, Animal animalNovo){
         for(Animal a : listaAnimais){
-            write = a.toString();
-            System.out.println("[" + i + "]");
-            System.out.println(write);
-            i++;
+            if(a.getCod().equals(codAntigo)){
+                a.copia(animalNovo);
+            }
         }
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder saida = new StringBuilder();
+        for(Animal animal : listaAnimais){
+            saida.append(animal.toString()).append("\n");
+        }
+        return saida.toString();
+    }
+    
+    
     
     
     

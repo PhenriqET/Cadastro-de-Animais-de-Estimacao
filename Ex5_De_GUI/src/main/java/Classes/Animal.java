@@ -9,18 +9,29 @@ package Classes;
   "peso": 30
 */
 public class Animal {
-    private int cod;
+    private String cod;
     private String nome;
     private String raca;
+    private String especie;
     private int idade;
     private double peso;
     
     //Metodos
-
-    public Animal(int cod, String nome, String raca, int idade, double peso) {
+    
+    public Animal() {
+        this.cod = "";
+        this.nome = "";
+        this.raca = "";
+        this.especie = "";
+        this.idade = 0;
+        this.peso = 0.0;
+    }
+    
+    public Animal(String cod, String nome, String raca, String especie, int idade, double peso) {
         this.cod = cod;
         this.nome = nome;
         this.raca = raca;
+        this.especie = especie;
         this.idade = idade;
         this.peso = peso;
     }
@@ -29,6 +40,7 @@ public class Animal {
         this.cod = copia.cod;
         this.nome = copia.nome;
         this.raca = copia.raca;
+        this.especie = copia.especie;
         this.idade = copia.idade;
         this.peso = copia.peso;
     }
@@ -38,16 +50,17 @@ public class Animal {
         return "Animal{ cod: " + cod 
                 + ", nome: " + nome 
                 + ", raca: " + raca 
+                + ", especie: " + especie
                 + ", idade: " + idade 
                 + ", peso: " + peso + '}';
     }
     
     //Getters and Setters
 
-    public int getCod() {
+    public String getCod() {
         return cod;
     }
-    public void setCod(int cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 
@@ -65,6 +78,13 @@ public class Animal {
         this.raca = raca;
     }
 
+    public String getEspecie() {
+        return especie;
+    }
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+    
     public int getIdade() {
         return idade;
     }
